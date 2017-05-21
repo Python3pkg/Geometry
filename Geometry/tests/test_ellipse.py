@@ -256,7 +256,7 @@ class EllipseTestCase(unittest.TestCase):
         verts = e.vertices
         self.assertIsInstance(verts, dict)
         self.assertEqual(len(verts), 4)
-        for k, p in verts.items():
+        for k, p in list(verts.items()):
             v = getattr(e, k)
             self.assertIsInstance(p, Point)
             self.assertListEqual(p.xyz, v.xyz)
@@ -357,7 +357,7 @@ class EllipseTestCase(unittest.TestCase):
         self.assertTrue(e.f0 in e)
         self.assertTrue(e.f1 in e)
         self.assertTrue(e.center in e)
-        for k, v in e.vertices.items():
+        for k, v in list(e.vertices.items()):
             self.assertTrue(v in e, '{k} = {v}'.format(k=k, v=v))
             self.assertFalse(v * 2 in e, '{k} = {v}'.format(k=k, v=v))
 

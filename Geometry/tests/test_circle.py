@@ -132,9 +132,9 @@ class CircleInstanceMethodsTestCase(unittest.TestCase):
     def testCircleContainsPointInstanceMethod(self):
         c = Circle(radius=2)
         self.assertTrue(c.center in c)
-        for v in c.vertices.values():
+        for v in list(c.vertices.values()):
             self.assertTrue(v in c, '{!r} in {!r}'.format(v, c))
-        for v in c.vertices.values():
+        for v in list(c.vertices.values()):
             v *= 2
             self.assertFalse(v in c, '{!r} in {!r}'.format(v, c))
 

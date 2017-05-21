@@ -1685,7 +1685,7 @@ class PointSequence(collections.Sequence):
         if isinstance(xy,collections.Iterable):
             return (self[xy[0]],self[xy[1]])
         
-        return zip(self[0:],self[1:]+self[0:1])
+        return list(zip(self[0:],self[1:]+self[0:1]))
 
     def __eq__(self,other):
         '''

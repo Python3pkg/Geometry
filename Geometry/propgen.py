@@ -106,7 +106,7 @@ def FloatMultiProperty(keys, default=0.0, docs=None,
             return
 
         if isinstance(newValues, collections.Mapping):
-            for key, value in newValues.items():
+            for key, value in list(newValues.items()):
                 if key in writable_keys:
                     setattr(self, key, value)
             return
@@ -118,7 +118,7 @@ def FloatMultiProperty(keys, default=0.0, docs=None,
 
         try:
             mapping = vars(newValues)
-            for key, value in mapping.items():
+            for key, value in list(mapping.items()):
                 if key in writable_keys:
                     setattr(self, key, value)
             return
@@ -148,7 +148,7 @@ def MultiObjectProperty(keys, default, all_keys):
             return
 
         if isinstance(newValues, collections.Mapping):
-            for key, value in newValues.items():
+            for key, value in list(newValues.items()):
                 if key in keys:
                     setattr(self, key, value)
             return
@@ -160,7 +160,7 @@ def MultiObjectProperty(keys, default, all_keys):
 
         try:
             mapping = vars(newValues)
-            for key, value in mapping.items():
+            for key, value in list(mapping.items()):
                 if key in keys:
                     setattr(self, key, value)
             return

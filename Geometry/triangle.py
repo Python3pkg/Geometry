@@ -705,7 +705,7 @@ class Triangle(object):
         return 3
 
     def __iter__(self):
-        return zip(self.vertexNames, self.vertices)
+        return list(zip(self.vertexNames, self.vertices))
 
     def __getitem__(self, key):
         '''
@@ -825,14 +825,14 @@ class Triangle(object):
         otherType = type(other)
 
         if issubclass(otherType, Triangle):
-            for s in self.segments.values():
-                for q in other.segments.values():
+            for s in list(self.segments.values()):
+                for q in list(other.segments.values()):
                     if s.doesIntersect(q):
                         return True
             return False
 
         if issubclass(otherType, Line):
-            for s in self.segments.values():
+            for s in list(self.segments.values()):
                 if s.doesIntersect(other):
                     return True
             return False
